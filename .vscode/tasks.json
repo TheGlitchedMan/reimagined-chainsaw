@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"command":"npx tsc",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Build (Bot Server)"
+		},
+		{
+			"type": "shell",
+			"command":"npx tsc\nnode ./server_out/index.js\ndel ./server_out/* -Recurse",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Build & Test"
+		},
+		{
+			"type": "shell",
+			"command":"npx tsc\necho \"Running testscene.\"\nnode ./server_out/tests/scene_test_runner.js\ndel ./server_out/* -Recurse",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "Build & Rendering Test"
+		}
+	]
+}
